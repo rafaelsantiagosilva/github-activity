@@ -1,0 +1,28 @@
+{
+  "name": "github-activity",
+  "version": "1.0.0",
+  "description": "A CLI application with the goal to fetch activity from github users by its username.",
+  "main": "bin/index.js",
+  "bin": {
+    "github-activity": "./bin/index.mjs"
+  },
+  "scripts": {
+    "dev": "tsx ./src/index.ts",
+    "build": "tsup ./src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.27.0",
+  "devDependencies": {
+    "@types/node": "^25.2.2",
+    "tsup": "^8.5.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "commander": "^14.0.3",
+    "dotenv": "^17.2.4",
+    "inquirer": "^13.2.2"
+  }
+}
