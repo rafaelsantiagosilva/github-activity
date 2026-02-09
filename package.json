@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "A CLI application with the goal to fetch activity from github users by its username.",
   "main": "bin/index.js",
+  "type": "module",
   "bin": {
-    "github-activity": "./bin/index.mjs"
+    "github-activity": "./bin/index.js"
   },
   "scripts": {
     "dev": "tsx ./src/index.ts",
@@ -21,8 +22,11 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "chalk": "^5.6.2",
     "commander": "^14.0.3",
     "dotenv": "^17.2.4",
-    "inquirer": "^13.2.2"
+    "figlet": "^1.10.0",
+    "inquirer": "^13.2.2",
+    "ora": "^9.3.0"
   }
 }

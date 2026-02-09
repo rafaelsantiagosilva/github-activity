@@ -4,7 +4,7 @@ export default defineConfig({
   entry: ["./src/index.ts"],
   format: ["esm"],
   outDir: "bin", 
-  dts: true,
+  dts: false,
   splitting: false,            // Optional code splitting setting
   clean: true,                 // Clean dist directory
   sourcemap: true,             // Generate source maps
