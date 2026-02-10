@@ -8,14 +8,20 @@ type ApiEndpoint = "" | "/events" | "/repos";
 export async function fetchGithubUserData(username: string, endpoint: ApiEndpoint = "") {
   const token = process.env.GITHUB_API_TOKEN;
 
-  const spinner = ora("Carregando...");  
+  const spinner = ora("Carregando...");
   spinner.start();
 
-  const response = await fetch(`https://api.github.com/users/${username.concat(endpoint)}`, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  });
+  let response: Response;
+
+  if (token) {
+    response = await fetch(`https://api.github.com/users/${username.concat(endpoint)}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  } else {
+    response = await fetch(`https://api.github.com/users/${username.concat(endpoint)}`);
+  }
 
   spinner.succeed();
 
