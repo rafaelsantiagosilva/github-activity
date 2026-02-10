@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import chalk from "chalk";
+import figlet from "figlet";
 import inquirer from "inquirer";
 import { AppError } from "./errors/app.error.js";
 import { activities } from "./options/activities.js";
@@ -7,6 +8,14 @@ import { repositories } from "./options/repositories.js";
 import { fetchGithubUserData } from "./services/fetch-github-user-data.js";
 
 let isRunning = true;
+
+console.log(
+  chalk.bold(
+    figlet.textSync("Github Activity", {
+      horizontalLayout: "full"
+    })
+  )
+);
 
 try {
   do {
