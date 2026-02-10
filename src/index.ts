@@ -1,15 +1,12 @@
 #!/usr/bin/env node
 import chalk from "chalk";
 import inquirer from "inquirer";
-import ora from "ora";
 import { AppError } from "./errors/app.error.js";
-import { UserNotFoundError } from "./errors/user-not-found.error.js";
 import { activities } from "./options/activities.js";
 import { repositories } from "./options/repositories.js";
 import { fetchGithubUserData } from "./services/fetch-github-user-data.js";
 
 let isRunning = true;
-const spinner = ora("Carregando...");
 
 try {
   do {
@@ -22,12 +19,7 @@ try {
         },
       ]);
 
-    spinner.start();
     const user = await fetchGithubUserData(username);
-    spinner.succeed();
-
-    if (user.status === "404")
-      throw new UserNotFoundError("Usuário não econtrado.");
 
     const { choice } = await inquirer
       .prompt([

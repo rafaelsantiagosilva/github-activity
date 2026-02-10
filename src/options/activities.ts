@@ -1,20 +1,9 @@
 import chalk from "chalk";
-import ora from "ora";
-import { UnknownError } from "../errors/unknown.error.js";
 import { fetchGithubUserData } from "../services/fetch-github-user-data.js";
 import type { Event } from "../types/Event.js";
 
-export async function activities(user: string) {
-  const spinner = ora("Carregando atividade do usuário...");
-
-  spinner.start();
-  const events = await fetchGithubUserData("/events");
-
-  spinner.succeed();
-
-  if (events.status[0] !== "2") {
-    throw new UnknownError();
-  }
+export async function activities(username: string) {
+  const events = await fetchGithubUserData(username, "/events");
 
   if (!events.length) {
     console.log("> Nenhuma atividade encontrada");
